@@ -1,3 +1,5 @@
+plugins=(git sublime rails npm node bundler gem)
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/moon-hai/.oh-my-zsh
 ZSH_THEME=agnoster
@@ -29,11 +31,5 @@ export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 
-plugins=(git sublime rails npm node bundler gem)
-
 setopt no_beep
 setopt no_list_beep
-
-alias ll="pwd; ls -la"
-alias vz="vim ~/.zshrc"
-alias vrc="vim ~/.vimrc"
