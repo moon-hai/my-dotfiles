@@ -14,8 +14,7 @@
 	gr = branch
 	ga = add
 	gcm = commit
-	gt = status
-	gst = status
+	gss = status
 	gbr = branch
 	gs = reset
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
