@@ -1,4 +1,4 @@
-  set nocompatible
+set nocompatible
 
 filetype off
 
@@ -8,7 +8,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " ----- Making Vim look good ------------------------------------------
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -18,8 +17,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
-Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'editorconfig/editorconfig-vim'
@@ -27,6 +24,8 @@ Plugin 'honza/vim-snippets'
 Plugin '907th/vim-auto-save'
 Plugin 'posva/vim-vue'
 Plugin 'mattn/emmet-vim'
+Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'valloric/youcompleteme'
 
 " ----- Working with Git ----------------------------------------------
 Plugin 'airblade/vim-gitgutter'
@@ -107,6 +106,7 @@ set clipboard=unnamed
 
 " Set auto folder
 set autochdir
+set tags=./tags,tags;$HOME
 
 " Turn off bell
 set belloff=all
@@ -125,20 +125,21 @@ nnoremap <S-l> $
 nnoremap <S-h> 0
 
 " Insert mode
-inoremap <S-l> <C-o>$
-inoremap <S-h> <C-o>0
+inoremap <S-Right> <C-o>$
+inoremap <S-Left> <C-o>0
+:imap jj <Esc>
 
 nnoremap <S-c> :NERDTreeToggle<CR>
 nnoremap <C-e> <C-w>w
 
-imap <Up>    <Nop>
-imap <Down>  <Nop>
-imap <Left>  <Nop>
-imap <Right> <Nop>
-inoremap <C-k> <Up>
-inoremap <C-j> <Down>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
+" imap <Up>    <Nop>
+" imap <Down>  <Nop>
+" imap <Left>  <Nop>
+" imap <Right> <Nop>
+" inoremap <C-k> <Up>
+" inoremap <C-j> <Down>
+" inoremap <C-h> <Left>
+"inoremap <C-l> <Right>
 
 nmap >> <Nop>
 nmap << <Nop>
@@ -158,15 +159,16 @@ set mouse=""
 " in the sign column.
 hi clear SignColumn
 
-" ----- altercation/vim-colors-solarized settings -----
-" Toggle this to "light" for light colorscheme
+" ------ YouCompleteMe -----
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+
 set background=dark
+colorscheme hybrid_material
 
 " Uncomment the next line if your terminal is not configured for solarized
-"let g:solarized_termcolors=256
+let g:solarized_termcolors=256
 
-" Set the colorscheme
-colorscheme solarized
 set t_8f=^[[38;2;%lu;%lu;%lum
 set t_8b=^[[48;2;%lu;%lu;%lum
 
@@ -200,16 +202,6 @@ augroup mySyntastic
   au FileType tex let b:syntastic_mode = "passive"
 augroup END
 
-" ----- xolox/vim-easytags settings -----
-" Where to look for tags files
-set tags=./tags;,~/.vimtags
-" Sensible defaults
-let g:easytags_events = ['BufReadPost', 'BufWritePost']
-let g:easytags_async = 1
-let g:easytags_dynamic_files = 2
-let g:easytags_resolve_links = 1
-let g:easytags_suppress_ctags_warning = 1
-
 " ----- majutsushi/tagbar settings -----
 " Open/close tagbar with \b
 nmap <silent> <leader>b :TagbarToggle<CR>
@@ -228,4 +220,3 @@ augroup mydelimitMate
   au FileType tex let b:delimitMate_quotes = ""
   au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
   au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
-augroup END
