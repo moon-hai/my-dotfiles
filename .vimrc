@@ -123,6 +123,7 @@ nnoremap $ <Nop>
 nnoremap 0 <Nop>
 nnoremap <S-l> $
 nnoremap <S-h> 0
+nnoremap qq :q<CR>
 
 " Insert mode
 inoremap <S-Right> <C-o>$
@@ -130,7 +131,11 @@ inoremap <S-Left> <C-o>0
 :imap jj <Esc>
 
 nnoremap <S-c> :NERDTreeToggle<CR>
+nnoremap <S-f> :NERDTreeFind<CR>
+
 nnoremap <C-e> <C-w>w
+nnoremap <S-i> :vsp<CR>
+nnoremap <S-o> :sp<CR>
 
 " imap <Up>    <Nop>
 " imap <Down>  <Nop>
@@ -148,7 +153,7 @@ vmap << <Nop>
 nnoremap <Tab> >>
 nnoremap <S-Tab> <<
 
-vnoremap <Tab>   >><Esc>gv
+vnoremap <Tab> >><Esc>gv
 vnoremap <S-Tab> <<<Esc>gv
 
 syntax on
@@ -162,6 +167,7 @@ hi clear SignColumn
 " ------ YouCompleteMe -----
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
+let g:ycm_key_list_stop_completion = ['<C-y>', '<CR>']
 
 set background=dark
 colorscheme hybrid_material
@@ -191,6 +197,10 @@ let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeShowHidden=1
 
+" Highlight currently open buffer in NERDTree
+" autocmd BufEnter * silent! if bufname('%') !~# 'NERD_tree_' | cd %:p:h | NERDTreeCWD | wincmd p | endif
+"autocmd BufEnter * call rc:syncTree()
+
 " ----- Autosave --------
 let g:auto_save = 1
 
@@ -201,6 +211,12 @@ augroup mySyntastic
   au!
   au FileType tex let b:syntastic_mode = "passive"
 augroup END
+
+" ---- CtrlP ----
+let g:ctrlp_working_path_mode = 'ra'
+nnoremap <C-o> :CtrlPMRUFiles<CR>
+let g:ctrlp_mruf_exclude = '.*/tmp/.*\|.*/.git/.*'
+let g:ctrlp_max_files = 200000
 
 " ----- majutsushi/tagbar settings -----
 " Open/close tagbar with \b
