@@ -24,7 +24,7 @@ Plugin 'honza/vim-snippets'
 Plugin '907th/vim-auto-save'
 Plugin 'posva/vim-vue'
 Plugin 'mattn/emmet-vim'
-Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'crusoexia/vim-monokai'
 Plugin 'valloric/youcompleteme'
 
 " ----- Working with Git ----------------------------------------------
@@ -170,7 +170,7 @@ let g:ycm_server_log_level = 'debug'
 let g:ycm_key_list_stop_completion = ['<C-y>', '<CR>']
 
 set background=dark
-colorscheme hybrid_material
+colorscheme monokai
 
 " Uncomment the next line if your terminal is not configured for solarized
 let g:solarized_termcolors=256
