@@ -59,7 +59,7 @@ set cc=
 " Ruler
 set ruler
 set textwidth=100
-set colorcolumn=+1
+" set colorcolumn=+1
 set nowrap
 set number
 set regexpengine=1
