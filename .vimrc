@@ -54,6 +54,7 @@ filetype plugin indent on
 set t_Co=256
 let g:is_posix = 1
 set tw=99999
+set cc=
 
 " Ruler
 set ruler
