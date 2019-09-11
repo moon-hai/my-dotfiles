@@ -24,7 +24,7 @@ Plugin 'honza/vim-snippets'
 Plugin '907th/vim-auto-save'
 Plugin 'posva/vim-vue'
 Plugin 'mattn/emmet-vim'
-Plugin 'crusoexia/vim-monokai'
+Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'valloric/youcompleteme'
 
 " ----- Working with Git ----------------------------------------------
@@ -53,6 +53,7 @@ filetype plugin indent on
 " --- General settings ---
 set t_Co=256
 let g:is_posix = 1
+set tw=99999
 
 " Ruler
 set ruler
@@ -64,10 +65,15 @@ set regexpengine=1
 set noshowcmd
 set synmaxcol=200
 set nocursorline
+if $TERM_PROGRAM =~ "iTerm"
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
 
 " Save settings
 set encoding=utf-8
 set fileformats=unix
+
 " Tab settings
 set backspace=2
 set tabstop=2
@@ -113,14 +119,12 @@ set belloff=all
 
 " Map keys
 let mapleader=","
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
 nnoremap <Esc><Esc> :nohl<CR>
 
 nnoremap $ <Nop>
 nnoremap 0 <Nop>
+nnoremap <S-Right> $
+nnoremap <S-Left> 0
 nnoremap <S-l> $
 nnoremap <S-h> 0
 nnoremap qq :q<CR>
@@ -128,7 +132,7 @@ nnoremap qq :q<CR>
 " Insert mode
 inoremap <S-Right> <C-o>$
 inoremap <S-Left> <C-o>0
-:imap jj <Esc>
+inoremap jj <Esc>
 
 nnoremap <S-c> :NERDTreeToggle<CR>
 nnoremap <S-f> :NERDTreeFind<CR>
@@ -137,28 +141,25 @@ nnoremap <C-e> <C-w>w
 nnoremap <S-i> :vsp<CR>
 nnoremap <S-o> :sp<CR>
 
-" imap <Up>    <Nop>
-" imap <Down>  <Nop>
-" imap <Left>  <Nop>
-" imap <Right> <Nop>
-" inoremap <C-k> <Up>
-" inoremap <C-j> <Down>
-" inoremap <C-h> <Left>
-"inoremap <C-l> <Right>
-
 nmap >> <Nop>
 nmap << <Nop>
-vmap >> <Nop>
-vmap << <Nop>
 nnoremap <Tab> >>
 nnoremap <S-Tab> <<
 
+vmap >> <Nop>
+vmap << <Nop>
 vnoremap <Tab> >><Esc>gv
 vnoremap <S-Tab> <<<Esc>gv
 
 syntax on
 
 set mouse=""
+
+" ----- Theme ------
+set background=dark
+let g:hybrid_transparent_background = 1
+colorscheme hybrid_material
+let g:airline_theme = "hybrid"
 
 " We need this for plugins like Syntastic and vim-gitgutter which put symbols
 " in the sign column.
@@ -169,12 +170,7 @@ let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
 let g:ycm_key_list_stop_completion = ['<C-y>', '<CR>']
 
-set background=dark
-colorscheme monokai
-
-" Uncomment the next line if your terminal is not configured for solarized
-let g:solarized_termcolors=256
-
+" ------- Set insert mouse thin ------
 set t_8f=^[[38;2;%lu;%lu;%lum
 set t_8b=^[[48;2;%lu;%lu;%lum
 
@@ -188,18 +184,11 @@ let g:airline_detect_paste=1
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
 
-" Use the solarized theme for the Airline status bar
-let g:airline_theme='solarized'
-
 " ----- jistr/vim-nerdtree-tabs -----
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeShowHidden=1
-
-" Highlight currently open buffer in NERDTree
-" autocmd BufEnter * silent! if bufname('%') !~# 'NERD_tree_' | cd %:p:h | NERDTreeCWD | wincmd p | endif
-"autocmd BufEnter * call rc:syncTree()
 
 " ----- Autosave --------
 let g:auto_save = 1
@@ -217,16 +206,6 @@ let g:ctrlp_working_path_mode = 'ra'
 nnoremap <C-o> :CtrlPMRUFiles<CR>
 let g:ctrlp_mruf_exclude = '.*/tmp/.*\|.*/.git/.*'
 let g:ctrlp_max_files = 200000
-
-" ----- majutsushi/tagbar settings -----
-" Open/close tagbar with \b
-nmap <silent> <leader>b :TagbarToggle<CR>
-" Uncomment to open tagbar automatically whenever possible
-"autocmd BufEnter * nested :call tagbar#autoopen(0)
-
-" ----- airblade/vim-gitgutter settings -----
-" In vim-airline, only display "hunks" if the diff is non-zero
-let g:airline#extensions#hunks#non_zero_only = 1
 
 " ----- Raimondi/delimitMate settings -----
 let delimitMate_expand_cr = 1
