@@ -206,7 +206,7 @@ augroup END
 let g:ctrlp_working_path_mode = 'ra'
 nnoremap <C-o> :CtrlPMRUFiles<CR>
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_mruf_exclude = '.*/tmp/.*\|.*/.git/.*'
+let g:ctrlp_mruf_exclude = '.*/tmp/.*\|.*/.git/.*\|.*/node_modules/.*'
 let g:ctrlp_max_files = 200000
 
 " ----- Raimondi/delimitMate settings -----
