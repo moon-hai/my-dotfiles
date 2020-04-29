@@ -4,9 +4,6 @@ filetype off
 
 call plug#begin()
 
-" ----- Making Vim look good ------------------------------------------
-Plug 'tomasr/molokai'
-
 " ----- Vim as a programmer's text editor -----------------------------
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -17,8 +14,13 @@ Plug 'vim-scripts/a.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'honza/vim-snippets'
 Plug '907th/vim-auto-save'
-Plug 'leafoftree/vim-vue-plugin'
+Plug 'storyn26383/vim-vue'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
+Plug 'equinusocio/material-theme'
+Plug 'ryanoasis/vim-devicons'
+" Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'mhartington/oceanic-next'
 Plug 'valloric/youcompleteme'
 Plug 'terryma/vim-multiple-cursors'
@@ -46,7 +48,9 @@ call plug#end()
 filetype plugin indent on
 
 " --- General settings ---
-set t_Co=256
+set encoding=UTF-8
+
+"set t_Co=256
 let g:is_posix = 1
 set tw=99999
 set cc=
@@ -147,6 +151,7 @@ vnoremap <Tab> >><Esc>gv
 vnoremap <S-Tab> <<<Esc>gv
 
 set mouse=""
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 if (has("termguicolors"))
  set termguicolors
@@ -154,6 +159,7 @@ endif
 
 " Theme
 syntax enable
+let g:oceanic_next_terminal_italic = 1
 colorscheme OceanicNext
 
 " We need this for plugins like Syntastic and vim-gitgutter which put symbols
@@ -204,5 +210,10 @@ augroup mydelimitMate
 
 let g:elist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 
-" _______Vim Vue Plugin ______
-let g:vim_vue_plugin_load_full_syntax = 1
+" ---------- vim-javascript ---------------
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+
+" ----------- typescript -----------------
+let g:typescript_indent_disable = 1
