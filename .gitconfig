@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/moon-hai/.gitignore_global
+	excludesfile = /Users/hai/.gitignore_global
 	editor = vim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
@@ -9,7 +9,7 @@
 	trustExitCode = true
 [user]
 	name = moon-hai
-	email = moon.hai@1pac.vn
+	email = hai.lu@tokoin.io
 [alias]
 	gco = checkout
 	gr = branch
@@ -24,3 +24,7 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[pull]
+	rebase = false
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
