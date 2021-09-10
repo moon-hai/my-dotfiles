@@ -39,6 +39,8 @@ alias ezf='cd ~/Project/easy-game/'
 alias wk-wk='cd ~/Project/1pac/wakuwaku'
 alias wk-cms='cd ~/Project/1pac/wakuwaku-cms'
 
+alias outsource='cd ~/Project/development/'
+
 alias docker-up='cd ~/Project/Tokoin/BO/admin/tokoin_go_backend/dev-envs && docker-compose up -d && cd ../'
 alias docker-stop='cd ~/Project/Tokoin/BO/admin/tokoin_go_backend/dev-envs && docker-compose stop && cd ../'
 
@@ -61,7 +63,7 @@ if [ -f '/Users/hai/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/hai/google-
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/hai/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/hai/google-cloud-sdk/completion.zsh.inc'; fi
 
-[[ -s "/Users/hai/.gvm/scripts/gvm" ]] && source "/Users/hai/.gvm/scripts/gvm"
+#[[ -s "/Users/hai/.gvm/scripts/gvm" ]] && source "/Users/hai/.gvm/scripts/gvm"
 export GO_PATH=$HOME/go
 export PATH=$PATH:/$GO_PATH/bin
 export GOPATH=$HOME/go
@@ -74,8 +76,11 @@ export PATH="$PATH:/.cargo/env"
 export CARGO_NET_GIT_FETCH_WITH_CLI=true
 export PATH="$HOME/.phpenv/bin:$PATH"
 eval "$(phpenv init -)"
-#export PATH=$PATH:$HOME/.pub-cache/bin
+export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=$PATH:$HOME/fvm/default/bin
 export PATH=$PATH:~/.android-sdk-macosx/platform-tools/
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="/usr/local/lib/node_modules/testrpc:$PATH"
+
+# Solana
+export PATH="/Users/hai/.local/share/solana/install/active_release/bin:$PATH"
